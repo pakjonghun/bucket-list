@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import CanvasPage from './components/CanvasPage';
 import './App.css';
+import { useRef } from 'react';
+import { CanvasProvider } from './contexts/CanvasContext';
 
 function App() {
+  const parentRef = useRef<null | HTMLDivElement>(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <header>헤더</header>
+      <main>
+        <nav>네비게이션</nav>
+        <div ref={parentRef} className="parent">
+          <CanvasProvider>
+            <CanvasPage parentRef={parentRef} />
+          </CanvasProvider>
+        </div>
+        <div className="inspector">인스펙터</div>
+      </main>
+    </section>
   );
 }
 
