@@ -1,7 +1,6 @@
-import CanvasPage from './components/CanvasPage';
+import CanvasPage from './CanvasPage';
 import './App.css';
 import { useRef } from 'react';
-import { CanvasProvider } from './contexts/CanvasContext';
 
 function App() {
   const parentRef = useRef<null | HTMLDivElement>(null);
@@ -12,9 +11,7 @@ function App() {
       <main>
         <nav>네비게이션</nav>
         <div ref={parentRef} className="parent">
-          <CanvasProvider>
-            <CanvasPage parentRef={parentRef} />
-          </CanvasProvider>
+          <CanvasPage parentRef={parentRef} />
         </div>
         <div className="inspector">인스펙터</div>
       </main>
