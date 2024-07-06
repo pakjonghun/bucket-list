@@ -5,11 +5,12 @@ interface Props {
   text: string;
   onClick: () => void;
   endIcon?: ReactNode;
+  className?: string;
 }
 
-const BaseButton: FC<Props> = ({ text, onClick, endIcon }) => {
+const BaseButton: FC<Props> = ({ text, onClick, endIcon, className }) => {
   return (
-    <button onClick={onClick} className={styles.button}>
+    <button onClick={onClick} className={`${styles.button} ${className ?? ''}`}>
       <span>{text}</span>
       {!!endIcon && endIcon}
     </button>

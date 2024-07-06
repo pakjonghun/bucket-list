@@ -11,12 +11,31 @@
   height: 100%;
   background-color: var(backdrop-backdrop);
   backdrop-filter: blur(2px);
-  z-index: var(index-backdrop-blur);
+  z-index: var(--index-backdrop-blur);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.title .close {
+  cursor: pointer;
+  transition: transform var(--delay-transform);
+}
+
+.title .close:hover {
+  transform: scale(1.04);
 }
 
 .content {
+  min-width: 300px;
   border-radius: 4px;
-  padding: 14px 10px;
+  padding: 20px 14px;
   background-color: #fff;
-  z-index: var(index-modal-content);
+  z-index: var(--index-modal-content);
 }

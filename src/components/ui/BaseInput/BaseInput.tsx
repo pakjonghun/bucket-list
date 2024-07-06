@@ -14,18 +14,20 @@ const BaseInput: FC<Props> = ({ value, onChange, startIcon, endIcon, inputAttrib
 
   return (
     <div className={`${styles.container} ${focused ? styles.focused : ''}`}>
-      <div className={styles.startIconContainer}>{!!startIcon && startIcon}</div>
+      {startIcon && <div className={styles.startIconContainer}>{!!startIcon && startIcon}</div>}
       <input
+        {...inputAttributes}
         onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
-        {...inputAttributes}
         className={`${styles.input} ${focused ? styles.focused : ''}`}
         value={value}
         onChange={onChange}
       />
-      <div className={`${styles.endIconContainer} ${focused ? styles.focused : ''}`}>
-        {!!endIcon && endIcon}
-      </div>
+      {endIcon && (
+        <div className={`${styles.endIconContainer} ${focused ? styles.focused : ''}`}>
+          {!!endIcon && endIcon}
+        </div>
+      )}
     </div>
   );
 };

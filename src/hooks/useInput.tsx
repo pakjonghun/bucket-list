@@ -1,15 +1,18 @@
 import { useCallback, useState } from 'react';
 
 type SetValue = (value: string) => void;
-type OnChange = (event: React.ChangeEvent<HTMLInputElement>) => void;
-type UseInput = (initValue?: string) => [string, OnChange, SetValue];
+type OnChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+type useText = (initValue?: string) => [string, OnChange, SetValue];
 
-const useInput: UseInput = (initValue = '') => {
+const useInput: useText = (initValue = '') => {
   const [value, setValue] = useState<string>(initValue);
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  }, []);
+  const onChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setValue(event.target.value);
+    },
+    []
+  );
 
   return [value, onChange, setValue];
 };

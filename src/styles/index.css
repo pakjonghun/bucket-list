@@ -6,6 +6,7 @@
   --color-backdrop: rgb(0, 0, 0, 0.3);
   --index-backdrop-blur: 1000;
   --index-modal-content: 1001;
+  --delay-transform: 200ms;
 }
 
 * {

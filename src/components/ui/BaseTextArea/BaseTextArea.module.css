@@ -12,20 +12,23 @@
   border-color: var(--color-text);
 }
 
-.input {
+.textarea {
   padding: 10px 0;
   min-width: 200px;
+  width: 100%;
+  height: 140px;
   outline: none;
   border: none;
   font-size: 14px;
+  resize: none;
 }
 
-.input::placeholder {
+.textarea::placeholder {
   color: var(--color-grey);
   transition: color 300ms;
 }
 
-.input.focused::placeholder {
+.textarea.focused::placeholder {
   color: var(--color-text);
 }
 

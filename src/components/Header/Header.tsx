@@ -4,6 +4,7 @@ import styles from './Header.module.css';
 import SearchBucket from '../SearchBucket/SearchBucket';
 import { useState } from 'react';
 import BaseModal from '../ui/Modal/BaseModal';
+import CreateBucketModal from '../CreateBucketModal/CreateBucketModal';
 
 const Header = () => {
   const [openCreateModal, setOpenCreateModal] = useState(false);
@@ -21,7 +22,8 @@ const Header = () => {
       />
       <SearchBucket />
       <BaseModal
-        children={<div>zasdfasdfasdfsadfsad asdf asdfzz</div>}
+        title="버킷생성"
+        children={<CreateBucketModal />}
         open={openCreateModal}
         onClose={() => setOpenCreateModal(false)}
       />

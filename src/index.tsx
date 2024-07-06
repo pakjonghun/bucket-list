@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Board from './pages/Board/Board';
-import './index.css';
+import './styles/index.css';
+import './styles/animation.css';
 
 const router = createBrowserRouter([
   {
