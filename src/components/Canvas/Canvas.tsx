@@ -12,7 +12,7 @@ const Canvas = () => {
     if (!canvasRef.current || !canvasContainerRef.current) return;
 
     const canvas = new fabric.Canvas(canvasRef.current, {
-      backgroundColor: 'grey',
+      backgroundColor: 'lightGrey',
       width: canvasContainerRef.current.clientWidth,
       height: canvasContainerRef.current.clientHeight,
     });

@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import { FabricCanvas } from './types';
 
 export class CanvasController {
-  fabricCanvas: FabricCanvas = null;
+  private fabricCanvas: FabricCanvas = null;
 
   constructor() {
     makeAutoObservable(this);
