@@ -3,6 +3,9 @@
   --color-grey: #d1d1d1;
   --color-text: #22243b;
   --color-primary: #f16e03;
+  --color-backdrop: rgb(0, 0, 0, 0.3);
+  --index-backdrop-blur: 1000;
+  --index-modal-content: 1001;
 }
 
 * {
