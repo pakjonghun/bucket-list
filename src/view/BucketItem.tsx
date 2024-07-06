@@ -28,6 +28,8 @@ export class BucketItem extends fabric.Group {
       height: rect.height,
       originX: 'center',
       originY: 'center',
+      selectable: true,
+      hasControls: false,
     });
 
     // this.rect = rect;

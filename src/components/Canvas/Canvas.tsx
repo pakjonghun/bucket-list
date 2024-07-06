@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import styles from './Canvas.module.css';
 import { CANVAS_ID } from './constants';
-import * as fabric from 'fabric';
 import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
+import * as fabric from 'fabric';
 
 const Canvas = () => {
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
@@ -23,8 +23,10 @@ const Canvas = () => {
 
     const handleResize = () => {
       if (!canvasContainerRef.current) return;
-      canvas.setWidth(canvasContainerRef.current.clientWidth);
-      canvas.setHeight(canvasContainerRef.current.clientHeight);
+      canvas.setDimensions({
+        width: canvasContainerRef.current.clientWidth,
+        height: canvasContainerRef.current.clientHeight,
+      });
     };
 
     window.addEventListener('resize', handleResize);
