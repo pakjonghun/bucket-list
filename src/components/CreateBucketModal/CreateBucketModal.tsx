@@ -1,9 +1,10 @@
 import BaseInput from '../ui/BaseInput/BaseInput';
-import styles from './CreateBucketModal.module.css';
 import useInput from '../../hooks/useInput';
 import { FormEvent } from 'react';
 import BaseButton from '../ui/BaseButton/BaseButton';
 import BaseTextArea from '../ui/BaseTextArea/BaseTextArea';
+import { MdModeEdit } from 'react-icons/md';
+import styles from './CreateBucketModal.module.css';
 
 const CreateBucketModal = () => {
   const [bucketName, onChangeBucketName] = useInput();
@@ -16,6 +17,7 @@ const CreateBucketModal = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <BaseInput
+        startIcon={<MdModeEdit />}
         inputAttributes={{
           placeholder: '버킷 이름',
         }}
@@ -23,19 +25,14 @@ const CreateBucketModal = () => {
         value={bucketName}
       />
       <BaseTextArea
+        startIcon={<MdModeEdit />}
         textAreaAttributes={{
           placeholder: '버킷 설명',
         }}
         onChange={onChangeBucketDescription}
         value={bucketDescription}
       />
-      <BaseButton
-        className={styles.button}
-        onClick={() => {}}
-        text="생성"
-
-        // endIcon={}
-      />
+      <BaseButton className={styles.button} onClick={() => {}} text="생성" />
     </form>
   );
 };

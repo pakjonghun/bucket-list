@@ -14,7 +14,12 @@ const BaseTextArea: FC<Props> = ({ value, onChange, startIcon, endIcon, textArea
 
   return (
     <div className={`${styles.container} ${focused ? styles.focused : ''}`}>
-      {startIcon && <div className={styles.startIconContainer}>{!!startIcon && startIcon}</div>}
+      {startIcon && (
+        <div className={`${styles.startIconContainer} ${focused ? styles.focused : ''}`}>
+          {!!startIcon && startIcon}
+        </div>
+      )}
+
       <textarea
         {...textAreaAttributes}
         onBlur={() => setFocused(false)}

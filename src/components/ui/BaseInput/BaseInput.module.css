@@ -30,13 +30,12 @@
 }
 
 .startIconContainer {
-  margin-left: 10px;
   color: var(--color-grey);
   transition: color 300ms;
 }
 
 .endIconContainer {
-  margin-right: 10px;
+  margin-right: 4px;
   color: var(--color-grey);
   transition: color 300ms;
 }
