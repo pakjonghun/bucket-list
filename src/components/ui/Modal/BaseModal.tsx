@@ -1,4 +1,4 @@
-import { FC, MouseEvent, ReactNode, useEffect } from 'react';
+import { FC, MouseEvent, ReactNode } from 'react';
 import CreatePortal from '../CreatePortal/CreatePortal';
 import styles from './BaseModal.module.css';
 
@@ -9,18 +9,6 @@ interface Props {
 }
 
 const BaseModal: FC<Props> = ({ children, open, onClose }) => {
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open]);
-
   const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return;
 
