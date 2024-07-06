@@ -5,6 +5,9 @@ import BaseButton from '../ui/BaseButton/BaseButton';
 import BaseTextArea from '../ui/BaseTextArea/BaseTextArea';
 import { MdModeEdit } from 'react-icons/md';
 import styles from './CreateBucketModal.module.css';
+import { observer } from 'mobx-react';
+import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
+import { BucketItem } from '../../view/BucketItem';
 
 const CreateBucketModal = () => {
   const [bucketName, onChangeBucketName] = useInput();
@@ -12,6 +15,9 @@ const CreateBucketModal = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const bucketItem = new BucketItem({}, bucketName, bucketDescription);
+    canvasViewModel.canvas?.add(bucketItem);
+    canvasViewModel.canvas?.requestRenderAll();
   };
 
   return (
@@ -37,4 +43,4 @@ const CreateBucketModal = () => {
   );
 };
 
-export default CreateBucketModal;
+export default observer(CreateBucketModal);

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import styles from './Canvas.module.css';
 import { CANVAS_ID } from './constants';
 import * as fabric from 'fabric';
-import { canvasController } from '../../controller/canvasController/canvasController';
+import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
 
 const Canvas = () => {
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
@@ -17,7 +17,7 @@ const Canvas = () => {
       height: canvasContainerRef.current.clientHeight,
     });
 
-    canvasController.setCanvas(canvas);
+    canvasViewModel.setCanvas(canvas);
 
     canvas.requestRenderAll();
 

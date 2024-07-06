@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
-import { SelectedBucket } from './layoutController/types';
+import { SelectedBucket } from './types';
 
-export class LayoutController {
+export class LayoutViewModel {
   private bucket: SelectedBucket = null;
 
   constructor() {
@@ -17,4 +17,4 @@ export class LayoutController {
   }
 }
 
-export const layoutController = new LayoutController();
+export const layoutViewModel = new LayoutViewModel();

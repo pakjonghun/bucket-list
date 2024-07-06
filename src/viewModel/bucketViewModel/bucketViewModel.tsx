@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
-import { Bucket } from '../model/bucket';
+import { Bucket } from '../../model/bucket';
 
-export class BucketController {
+export class BucketViewModel {
   private boardById = new Map<string, Bucket>();
 
   constructor() {
