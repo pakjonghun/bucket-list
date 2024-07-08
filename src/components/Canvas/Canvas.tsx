@@ -46,7 +46,6 @@ const Canvas = () => {
     };
   }, []);
   const isShow = bucketPopupViewModel.show;
-  console.log(isShow);
 
   return (
     <div ref={canvasContainerRef} className={styles.container}>

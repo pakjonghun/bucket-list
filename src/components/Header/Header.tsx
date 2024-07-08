@@ -5,7 +5,6 @@ import SearchBucket from '../SearchBucket/SearchBucket';
 import { useState } from 'react';
 import BaseModal from '../ui/BaseModal/BaseModal';
 import CreateBucketModal from '../CreateBucketModal/CreateBucketModal';
-import { bucketPopupViewModel } from '../../viewModel/bucketPopupViewModel/bucketPopupViewModel';
 
 const Header = () => {
   const [openCreateModal, setOpenCreateModal] = useState(false);
