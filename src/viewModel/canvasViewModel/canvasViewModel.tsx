@@ -13,16 +13,19 @@ class CanvasViewModel {
 
   private paintBucketList = () => {
     const requestPaintList = bucketViewModel.requestPaint;
+    if (requestPaintList.length === 0) {
+      return;
+    }
+
+    console.log('paint');
 
     requestPaintList.forEach((item) => {
       const bucket = new BucketItem(item);
       this.canvas?.add(bucket);
     });
 
-    if (requestPaintList.length) {
-      bucketViewModel.bindBucket(requestPaintList.map((item) => item.id));
-      // this.canvas?.requestRenderAll();
-    }
+    bucketViewModel.bindBucket(requestPaintList.map((item) => item.id));
+    // this.canvas?.requestRenderAll();
   };
 
   setCanvas = (canvasValue: FabricCanvas) => {
