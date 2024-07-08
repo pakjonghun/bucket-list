@@ -34,8 +34,8 @@ const Canvas = () => {
       const selectedItem = bucketViewModel.getBucketById(activeObjectId)?.data ?? null;
       selectedBucketViewModel.setSelectedBucket(selectedItem);
       canvasViewModel.canvas?.setDimensions({
-        width: canvasViewModel.canvas.width!! - 300,
-        height: canvasViewModel.canvas.height!!,
+        width: canvasViewModel.canvas.getWidth() - 300,
+        height: canvasViewModel.canvas.getHeight(),
       });
     };
 
@@ -48,8 +48,8 @@ const Canvas = () => {
     const handleSelectCleared = () => {
       selectedBucketViewModel.setSelectedBucket(null);
       canvasViewModel.canvas?.setDimensions({
-        width: canvasViewModel.canvas.width!! + 300,
-        height: canvasViewModel.canvas.height!!,
+        width: canvasViewModel.canvas.getWidth() + 300,
+        height: canvasViewModel.canvas.getHeight(),
       });
     };
 
