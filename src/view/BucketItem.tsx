@@ -1,7 +1,7 @@
-import * as fabric from 'fabric';
+import { fabric } from 'fabric';
 
 export class BucketItem extends fabric.Group {
-  constructor(options = {}, title: string, description: string) {
+  constructor(options: { x: number; y: number }, title: string, description: string) {
     const rect = new fabric.Rect({
       width: 100,
       height: 100,
@@ -23,7 +23,8 @@ export class BucketItem extends fabric.Group {
     });
 
     super([rect, titleObj], {
-      ...options,
+      left: options.x,
+      top: options.y,
       width: rect.width,
       height: rect.height,
       originX: 'center',

@@ -8,6 +8,15 @@ class BucketViewModel {
     makeAutoObservable(this);
   }
 
+  bindBucket = (bucketIdList: string[]) => {
+    bucketIdList.forEach((id) => {
+      const bucket = this.bucketById.get(id);
+      if (bucket) {
+        bucket.hasView = true;
+      }
+    });
+  };
+
   get requestPaint() {
     const result: Bucket[] = [];
     this.bucketById.forEach((item) => {

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import styles from './Canvas.module.css';
 import { CANVAS_ID } from './constants';
 import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
-import * as fabric from 'fabric';
+import { fabric } from 'fabric';
 import { bucketViewModel } from '../../viewModel/bucketViewModel/bucketViewModel';
 import { Bucket } from '../../model/bucket';
 
@@ -19,22 +19,21 @@ const Canvas = () => {
       height: canvasContainerRef.current.clientHeight,
     });
 
-    const handleDragLeave = (event: any) => {
-      const pointer = canvas.getScenePoint(event.e);
+    const handleDrop = (event: any) => {
+      const pointer = canvas.getPointer(event.e);
       console.log(pointer);
-      // console.log('pointer : ', pointer);
-      // const newBucket: Bucket = {
-      //   id: Math.random().toString(),
-      //   name: 'name',
-      //   description: '',
-      //   position: pointer,
-      //   status: 'Processing',
-      // };
+      const newBucket: Bucket = {
+        id: Math.random().toString(),
+        name: 'name',
+        description: '',
+        position: pointer,
+        status: 'Processing',
+      };
 
-      // bucketViewModel.appendBucket(newBucket);
+      bucketViewModel.appendBucket(newBucket);
     };
 
-    canvas.on('dragend', handleDragLeave);
+    canvas.on('drop', handleDrop);
 
     canvasViewModel.setCanvas(canvas);
 
