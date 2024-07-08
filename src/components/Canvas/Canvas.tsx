@@ -6,6 +6,8 @@ import { fabric } from 'fabric';
 import { observer } from 'mobx-react';
 import { bucketPopupViewModel } from '../../viewModel/bucketPopupViewModel/bucketPopupViewModel';
 import CreateBucketPopup from '../CreateBucketPopup/CreateBucketPopup';
+import { bucketViewModel } from '../../viewModel/bucketViewModel/bucketViewModel';
+import { selectedBucketViewModel } from '../../viewModel/selectedBucketViewModel/bucketViewModel';
 
 const Canvas = () => {
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
@@ -18,6 +20,7 @@ const Canvas = () => {
       backgroundColor: 'lightGrey',
       width: canvasContainerRef.current.clientWidth,
       height: canvasContainerRef.current.clientHeight,
+      selection: false,
     });
 
     const handleDrop = (event: any) => {
@@ -26,6 +29,33 @@ const Canvas = () => {
       bucketPopupViewModel.setShow(true);
     };
 
+    const handleSelectCreated = (event: any) => {
+      const activeObjectId = event.selected[0].id;
+      const selectedItem = bucketViewModel.getBucketById(activeObjectId)?.data ?? null;
+      selectedBucketViewModel.setSelectedBucket(selectedItem);
+      canvasViewModel.canvas?.setDimensions({
+        width: canvasViewModel.canvas.width!! - 300,
+        height: canvasViewModel.canvas.height!!,
+      });
+    };
+
+    const handleSelectUpdated = (event: any) => {
+      const activeObjectId = event.selected[0].id;
+      const selectedItem = bucketViewModel.getBucketById(activeObjectId)?.data ?? null;
+      selectedBucketViewModel.setSelectedBucket(selectedItem);
+    };
+
+    const handleSelectCleared = () => {
+      selectedBucketViewModel.setSelectedBucket(null);
+      canvasViewModel.canvas?.setDimensions({
+        width: canvasViewModel.canvas.width!! + 300,
+        height: canvasViewModel.canvas.height!!,
+      });
+    };
+
+    canvas.on('selection:created', handleSelectCreated);
+    canvas.on('selection:updated', handleSelectUpdated);
+    canvas.on('selection:cleared', handleSelectCleared);
     canvas.on('drop', handleDrop);
     canvasViewModel.setCanvas(canvas);
 

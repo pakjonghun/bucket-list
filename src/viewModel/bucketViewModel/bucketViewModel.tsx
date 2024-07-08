@@ -17,6 +17,10 @@ class BucketViewModel {
     });
   };
 
+  getBucketById = (id: string) => {
+    return this.bucketById.get(id);
+  };
+
   get requestPaint() {
     const result: Bucket[] = [];
     this.bucketById.forEach((item) => {

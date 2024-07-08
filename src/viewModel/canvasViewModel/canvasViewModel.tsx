@@ -1,7 +1,7 @@
 import { autorun, makeAutoObservable } from 'mobx';
 import { FabricCanvas } from './types';
 import { bucketViewModel } from '../bucketViewModel/bucketViewModel';
-import { BucketItem } from '../../view/BucketItem';
+import { BucketItem } from '../../view/BucketItem/BucketItem';
 
 class CanvasViewModel {
   private fabricCanvas: FabricCanvas = null;
@@ -15,7 +15,7 @@ class CanvasViewModel {
     const requestPaintList = bucketViewModel.requestPaint;
 
     requestPaintList.forEach((item) => {
-      const bucket = new BucketItem(item.position, item.name, item.description);
+      const bucket = new BucketItem(item);
       this.canvas?.add(bucket);
     });
 

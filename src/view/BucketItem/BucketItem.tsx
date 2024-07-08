@@ -1,30 +1,35 @@
 import { fabric } from 'fabric';
+import { Bucket } from '../../model/bucket';
 
 export class BucketItem extends fabric.Group {
-  constructor(options: { x: number; y: number }, title: string, description: string) {
+  id = '';
+  constructor({ id, position, name, description }: Omit<Bucket, 'status'>) {
+    const titleObj = new fabric.Textbox(name, {
+      fontSize: 20,
+      originX: 'center',
+      originY: 'center',
+      selectable: false,
+    });
+
     const rect = new fabric.Rect({
       width: 100,
       height: 100,
       fill: 'red',
       originX: 'center',
       originY: 'center',
-    });
-
-    const titleObj = new fabric.Textbox(title, {
-      fontSize: 20,
-      originX: 'center',
-      originY: 'center',
+      selectable: false,
     });
 
     const descObj = new fabric.Textbox(description, {
       fontSize: 20,
       originX: 'center',
       originY: 'center',
+      selectable: false,
     });
 
     super([rect, titleObj], {
-      left: options.x,
-      top: options.y,
+      left: position.x,
+      top: position.y,
       width: rect.width,
       height: rect.height,
       originX: 'center',
@@ -32,6 +37,8 @@ export class BucketItem extends fabric.Group {
       selectable: true,
       hasControls: false,
     });
+
+    this.id = id;
 
     // this.rect = rect;
     // this.textObj = textObj;
