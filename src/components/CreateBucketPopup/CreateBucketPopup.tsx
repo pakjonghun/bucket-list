@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 import { bucketPopupViewModel } from '../../viewModel/bucketPopupViewModel/bucketPopupViewModel';
 import CreateBucketModal from '../CreateBucketModal/CreateBucketModal';
-import styles from './CreateBucketPopup.module.css';
 import ModalHeader from '../ModalHeader/ModalHeader';
+import styles from './CreateBucketPopup.module.css';
 
 const CreateBucketPopup = () => {
   const handleClosePopup = () => {
@@ -18,7 +18,6 @@ const CreateBucketPopup = () => {
       if (isPopupClicked) {
         return;
       }
-      console.log('event : ', event.target);
       handleClosePopup();
     };
 
@@ -32,7 +31,7 @@ const CreateBucketPopup = () => {
   return (
     <div ref={popupRef} style={{ left: x, top: y }} className={styles.createModalPopup}>
       <ModalHeader title="버킷 생성" onClose={handleClosePopup} />
-      <CreateBucketModal />
+      <CreateBucketModal onClose={handleClosePopup} position={{ x, y }} />
     </div>
   );
 };

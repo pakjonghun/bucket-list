@@ -3,14 +3,19 @@ import CreateButton from '../ui/BaseButton/BaseButton';
 import styles from './Header.module.css';
 import SearchBucket from '../SearchBucket/SearchBucket';
 import { useState } from 'react';
-import BaseModal from '../ui/Modal/BaseModal';
+import BaseModal from '../ui/BaseModal/BaseModal';
 import CreateBucketModal from '../CreateBucketModal/CreateBucketModal';
+import { bucketPopupViewModel } from '../../viewModel/bucketPopupViewModel/bucketPopupViewModel';
 
 const Header = () => {
   const [openCreateModal, setOpenCreateModal] = useState(false);
 
   const handleClickCreateButton = () => {
     setOpenCreateModal((prev) => !prev);
+  };
+
+  const handleClose = () => {
+    setOpenCreateModal(false);
   };
 
   return (
@@ -23,7 +28,7 @@ const Header = () => {
       <SearchBucket />
       <BaseModal
         title="버킷생성"
-        children={<CreateBucketModal />}
+        children={<CreateBucketModal onClose={handleClose} position={{ x: 0, y: 0 }} />}
         open={openCreateModal}
         onClose={() => setOpenCreateModal(false)}
       />

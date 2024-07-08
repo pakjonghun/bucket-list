@@ -1,13 +1,19 @@
 import BaseInput from '../ui/BaseInput/BaseInput';
 import useInput from '../../hooks/useInput';
-import { FormEvent } from 'react';
+import { FC, FormEvent } from 'react';
 import BaseButton from '../ui/BaseButton/BaseButton';
 import BaseTextArea from '../ui/BaseTextArea/BaseTextArea';
 import { MdModeEdit } from 'react-icons/md';
 import styles from './CreateBucketModal.module.css';
 import { bucketViewModel } from '../../viewModel/bucketViewModel/bucketViewModel';
+import { Position } from '../../types';
 
-const CreateBucketModal = () => {
+interface Props {
+  position: Position;
+  onClose: () => void;
+}
+
+const CreateBucketModal: FC<Props> = ({ position, onClose }) => {
   const [bucketName, onChangeBucketName] = useInput();
   const [bucketDescription, onChangeBucketDescription] = useInput();
 
@@ -16,8 +22,9 @@ const CreateBucketModal = () => {
     bucketViewModel.createBucket({
       name: bucketName,
       description: bucketDescription,
-      position: { x: 0, y: 0 },
+      position,
     });
+    onClose();
   };
 
   return (
