@@ -1,30 +1,15 @@
-import { DragEvent } from 'react';
+import { RiDragDropLine } from 'react-icons/ri';
 import styles from './LeftNav.module.css';
-import { Bucket } from '../../model/bucket';
 
 const LeftNav = () => {
-  const bucket: Bucket = {
-    id: Math.random().toString(),
-    description: 'desc',
-    name: 'title',
-    position: { x: 300, y: 200 },
-    status: 'Processing',
-  };
-
-  const handleDragStart = (event: DragEvent<HTMLLIElement>) => {
-    // event.dataTransfer.setData('text/plain', bucket.id);
-  };
-
   return (
     <nav className={styles.nav}>
-      <ul>
-        <li draggable onDragStart={handleDragStart} className={styles.bucket}>
-          item1
-        </li>
-        <li draggable onDragStart={handleDragStart} className={styles.bucket}>
-          item1
-        </li>
-      </ul>
+      <div className={styles.bucketContainer}>
+        <div draggable className={styles.bucket}>
+          <span>버킷 리스트 생성</span>
+          <RiDragDropLine />
+        </div>
+      </div>
     </nav>
   );
 };

@@ -31,6 +31,22 @@ class BucketViewModel {
   appendBucket = (bucket: Bucket) => {
     this.bucketById.set(bucket.id, { hasView: false, data: bucket });
   };
+
+  createBucket = ({
+    name,
+    description,
+    position,
+  }: Pick<Bucket, 'name' | 'description' | 'position'>) => {
+    const newBucket: Bucket = {
+      id: Math.random().toString(),
+      name,
+      description,
+      position,
+      status: 'Processing',
+    };
+
+    this.appendBucket(newBucket);
+  };
 }
 
 export const bucketViewModel = new BucketViewModel();

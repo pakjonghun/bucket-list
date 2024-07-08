@@ -1,0 +1,9 @@
+.createModalPopup {
+  position: absolute;
+  background-color: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 4px;
+  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.5);
+  z-index: var(--index-modal-content);
+}

@@ -1,9 +1,6 @@
-export type BucketStatus = 'Done' | 'Processing';
+import { Position } from '../types';
 
-export type Position = {
-  x: number;
-  y: number;
-};
+export type BucketStatus = 'Done' | 'Processing';
 
 export type Bucket = {
   id: string;

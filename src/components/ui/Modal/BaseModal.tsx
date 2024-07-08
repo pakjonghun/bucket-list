@@ -2,6 +2,7 @@ import { FC, MouseEvent, ReactNode } from 'react';
 import CreatePortal from '../CreatePortal/CreatePortal';
 import { IoMdClose } from 'react-icons/io';
 import styles from './BaseModal.module.css';
+import ModalHeader from '../../ModalHeader/ModalHeader';
 
 interface Props {
   title: ReactNode;
@@ -25,10 +26,7 @@ const BaseModal: FC<Props> = ({ title, children, open, onClose }) => {
     children: (
       <div onClick={handleBackdropClick} className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.title}>
-            {title}
-            <IoMdClose className={styles.close} onClick={onClose} />
-          </div>
+          <ModalHeader title={title} onClose={onClose} />
           {children}
         </div>
       </div>

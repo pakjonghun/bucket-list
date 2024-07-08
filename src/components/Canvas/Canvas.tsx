@@ -3,8 +3,9 @@ import styles from './Canvas.module.css';
 import { CANVAS_ID } from './constants';
 import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
 import { fabric } from 'fabric';
-import { bucketViewModel } from '../../viewModel/bucketViewModel/bucketViewModel';
-import { Bucket } from '../../model/bucket';
+import { observer } from 'mobx-react';
+import { bucketPopupViewModel } from '../../viewModel/bucketPopupViewModel/bucketPopupViewModel';
+import CreateBucketPopup from '../CreateBucketPopup/CreateBucketPopup';
 
 const Canvas = () => {
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
@@ -21,23 +22,12 @@ const Canvas = () => {
 
     const handleDrop = (event: any) => {
       const pointer = canvas.getPointer(event.e);
-      console.log(pointer);
-      const newBucket: Bucket = {
-        id: Math.random().toString(),
-        name: 'name',
-        description: '',
-        position: pointer,
-        status: 'Processing',
-      };
-
-      bucketViewModel.appendBucket(newBucket);
+      bucketPopupViewModel.setPosition(pointer);
+      bucketPopupViewModel.setShow(true);
     };
 
     canvas.on('drop', handleDrop);
-
     canvasViewModel.setCanvas(canvas);
-
-    canvas.requestRenderAll();
 
     const handleResize = () => {
       if (!canvasContainerRef.current) return;
@@ -50,16 +40,20 @@ const Canvas = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
+      canvas.off('drop', handleDrop);
       canvas.dispose();
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const isShow = bucketPopupViewModel.show;
+  console.log(isShow);
 
   return (
     <div ref={canvasContainerRef} className={styles.container}>
       <canvas ref={canvasRef} id={CANVAS_ID} className={styles.canvas} />
+      {isShow && <CreateBucketPopup />}
     </div>
   );
 };
 
-export default Canvas;
+export default observer(Canvas);

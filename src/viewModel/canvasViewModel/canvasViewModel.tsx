@@ -13,7 +13,6 @@ class CanvasViewModel {
 
   private paintBucketList = () => {
     const requestPaintList = bucketViewModel.requestPaint;
-    console.log('requestPaintList : ', requestPaintList.length);
 
     requestPaintList.forEach((item) => {
       const bucket = new BucketItem(item.position, item.name, item.description);
