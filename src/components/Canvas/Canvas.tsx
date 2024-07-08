@@ -71,6 +71,9 @@ const Canvas = () => {
 
     return () => {
       canvas.off('drop', handleDrop);
+      canvas.off('selection:created', handleSelectCreated);
+      canvas.off('selection:updated', handleSelectUpdated);
+      canvas.off('selection:cleared', handleSelectCleared);
       canvas.dispose();
       window.removeEventListener('resize', handleResize);
     };

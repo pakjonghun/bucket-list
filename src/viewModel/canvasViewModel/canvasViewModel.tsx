@@ -21,7 +21,7 @@ class CanvasViewModel {
 
     if (requestPaintList.length) {
       bucketViewModel.bindBucket(requestPaintList.map((item) => item.id));
-      this.canvas?.requestRenderAll();
+      // this.canvas?.requestRenderAll();
     }
   };
 
