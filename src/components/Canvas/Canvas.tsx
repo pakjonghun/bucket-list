@@ -3,6 +3,8 @@ import styles from './Canvas.module.css';
 import { CANVAS_ID } from './constants';
 import { canvasViewModel } from '../../viewModel/canvasViewModel/canvasViewModel';
 import * as fabric from 'fabric';
+import { bucketViewModel } from '../../viewModel/bucketViewModel/bucketViewModel';
+import { Bucket } from '../../model/bucket';
 
 const Canvas = () => {
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
@@ -16,6 +18,23 @@ const Canvas = () => {
       width: canvasContainerRef.current.clientWidth,
       height: canvasContainerRef.current.clientHeight,
     });
+
+    const handleDragLeave = (event: any) => {
+      const pointer = canvas.getScenePoint(event.e);
+      console.log(pointer);
+      // console.log('pointer : ', pointer);
+      // const newBucket: Bucket = {
+      //   id: Math.random().toString(),
+      //   name: 'name',
+      //   description: '',
+      //   position: pointer,
+      //   status: 'Processing',
+      // };
+
+      // bucketViewModel.appendBucket(newBucket);
+    };
+
+    canvas.on('dragend', handleDragLeave);
 
     canvasViewModel.setCanvas(canvas);
 
