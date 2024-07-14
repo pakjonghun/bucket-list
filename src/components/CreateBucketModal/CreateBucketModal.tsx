@@ -33,6 +33,7 @@ const CreateBucketModal: FC<Props> = ({ position, onClose }) => {
         startIcon={<MdModeEdit />}
         inputAttributes={{
           placeholder: '버킷 이름',
+          autoFocus: true,
         }}
         onChange={onChangeBucketName}
         value={bucketName}
